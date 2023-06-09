@@ -50,7 +50,7 @@ export default function Slides () {
    const postSlide = isFirstSlide ? slides.length - 1 : currentIndex - 1;
    
    let slideInterval;
-   const intervalTime = 3000;
+   const intervalTime = 10000;
 
    function auto () {
    slideInterval=setInterval(nextSlide,intervalTime)
