@@ -49,17 +49,16 @@ export default function Slides () {
    const preSlide = isLastSlide ? 0 : currentIndex + 1
    const postSlide = isFirstSlide ? slides.length - 1 : currentIndex - 1;
    
-   let slideInterval;
-   const intervalTime = 10000;
+   const intervalTime = 3000;
 
    function auto () {
-   slideInterval=setInterval(nextSlide,intervalTime)
+setInterval(nextSlide,intervalTime)
 }
    useEffect( () => {
    auto()
-},[currentIndex])
+   }, [ currentIndex ] )
    
-   
+
    return (
       <main className='max-w-[1400px] h-[500px] w-full m-auto py-16 px-8 relative group flex items-center'>
          <div style={ { backgroundImage: `url(${ slides[ preSlide ].url })` } }
