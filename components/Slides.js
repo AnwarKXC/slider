@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 
@@ -48,20 +48,32 @@ export default function Slides () {
    const preSlide = isLastSlide ? 0 : currentIndex + 1
    const postSlide = isFirstSlide ? slides.length - 1 : currentIndex - 1;
    
-   const intervalTime = 3000;
-   function resetTime () {
-      if ( intervalTime ) {
-         clearTimeout(intervalTime)
+
+
+
+   const delay = 2500;
+      const timeoutRef = useRef( null );
+      function resetTimeout () {
+         if ( timeoutRef.current ) {
+            clearTimeout( timeoutRef.current );
+         }
       }
-   }
-   function auto () {
-setInterval(nextSlide,intervalTime)
-}
-   useEffect( () => {
-      resetTime();
-      auto();
-   }, [ currentIndex ] )
-   
+
+      useEffect( () => {
+         resetTimeout();
+         timeoutRef.current = setTimeout(
+            () =>
+               setCurrentIndex( ( prevIndex ) =>
+                  prevIndex === slides.length - 1 ? 0 : prevIndex + 1
+               ),
+            delay
+         );
+
+         return () => {
+            resetTimeout();
+         };
+      }, [ currentIndex ] );
+
 
 
    return (
