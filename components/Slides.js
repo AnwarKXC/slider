@@ -48,7 +48,7 @@ export default function Slides () {
    const preSlide = isLastSlide ? 0 : currentIndex + 1
    const postSlide = isFirstSlide ? slides.length - 1 : currentIndex - 1;
    
-   const intervalTime = 5000;
+   const intervalTime = 3000;
    function resetTime () {
       if ( intervalTime ) {
          clearTimeout(intervalTime)
