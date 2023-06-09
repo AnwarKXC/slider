@@ -15,7 +15,6 @@ export default function Slides () {
       {
          url: 'https://media.flixscans.com/sliders/b238e61a-ba35-4be7-aa06-43a3718abfaa/FAgDaI9tXCd5Iq2fOmgc9HLzpM4Swn-metaRGVhdGggSXMgdGhlIE9ubHkgRW5kaW5nIGZvciB0aGUgVmlsbGFpbmVzczEuanBn-.webp',
       },
-
       {
          url: 'https://media.flixscans.com/sliders/cc1c464d-6355-4ee5-8a5b-7af0a2d8b187/SKFUudVeLQPBqssriaOFKDWvFSsP4U-metaVGhlIFZpbGxhaW7igJlzIFNhdmlvci5qcGc=-.webp',
       },
@@ -49,15 +48,21 @@ export default function Slides () {
    const preSlide = isLastSlide ? 0 : currentIndex + 1
    const postSlide = isFirstSlide ? slides.length - 1 : currentIndex - 1;
    
-   const intervalTime = 3000;
-
+   const intervalTime = 5000;
+   function resetTime () {
+      if ( intervalTime ) {
+         clearTimeout(intervalTime)
+      }
+   }
    function auto () {
 setInterval(nextSlide,intervalTime)
 }
    useEffect( () => {
-   auto()
+      resetTime();
+      auto();
    }, [ currentIndex ] )
    
+
 
    return (
       <main className='max-w-[1400px] h-[500px] w-full m-auto py-16 px-8 relative group flex items-center'>
