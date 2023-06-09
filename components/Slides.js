@@ -95,9 +95,9 @@ export default function Slides () {
          </div>
          <div
             style={ { backgroundImage: `url(${ slides[ currentIndex ].url })` } }
-            className='w-3/5 h-full rounded-md mx-auto bg-center bg-cover duration-500 flex flex-col-reverse flex justify-center items-center md:block md:mx-10'>
+            className='w-3/5 h-full rounded-md mx-auto bg-center bg-cover duration-500  flex-col-reverse flex justify-start items-center  md:mx-10'>
             
-               <h2 className=' z-20 text-3xl  text-white  flex justify-center mb-3 '>{ slides[currentIndex].title  }</h2>
+               <h2 className=' z-20 text-3xl  text-white  flex justify-center mb-3 items-end'>{ slides[currentIndex].title  }</h2>
             
          </div>
 
